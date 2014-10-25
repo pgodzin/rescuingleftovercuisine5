@@ -43,13 +43,5 @@
             android:label="Events"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"/>
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <!--<uses-library android:name="com.google.android.maps" /> -->
-
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBMWJqTldY1Wd_Wg4USRwYTlivYUIbF6x0"/>
     </application>
 </manifest>

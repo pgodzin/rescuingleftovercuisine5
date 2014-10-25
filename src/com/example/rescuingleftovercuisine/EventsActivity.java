@@ -13,21 +13,12 @@ import android.view.ViewGroup;
 import android.widget.*;
 import backend.Data_Array;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import backend.Event;
 
 import java.util.ArrayList;
 
-public class EventsActivity extends Activity implements LocationListener {
+public class EventsActivity extends Activity {
 
-    private GoogleMap map;
     ArrayAdapter<Event> adapter = null;
     ArrayAdapter<Event> later_adapter = null;
 
@@ -147,9 +138,6 @@ public class EventsActivity extends Activity implements LocationListener {
             }
         });
 
-        //map logic
-        loadMap();
-
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         // Creating a criteria object to retrieve provider
@@ -161,79 +149,6 @@ public class EventsActivity extends Activity implements LocationListener {
         // Getting Current Location
         Location location = locationManager.getLastKnownLocation(provider);
 
-        if(location!=null){
-            onLocationChanged(location);
-        }
-        locationManager.requestLocationUpdates(provider, 20000, 0, this);
-
         //markPickups();
-    }
-
-    /*
-    Load the map.
-    There's an issue where map loads the last known location or the center of the earth
-     */
-    private void loadMap() {
-        if (map != null) {
-            return;
-        }
-        MapFragment mapFrag = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-        map = mapFrag.getMap();
-
-        if (map == null) {
-            return;
-        }
-
-        map.setMyLocationEnabled(true);
-
-    }
-
-/*    *//*
-    Mark all pickup locations for all events
-     *//*
-    private void markPickups(){
-        for(int i = 0; i < eventData.size(); i++){
-            Event event = eventData.get(i);
-            String[] cords = event.getEventLocation().split(",");
-            LatLng dest = new LatLng(Double.valueOf(cords[0]), Double.valueOf(cords[1]));
-
-            map.addMarker(new MarkerOptions()
-                    .position(dest)
-                    .title(event.getEventTitle())
-                    .snippet(event.getEventTime())
-                    .icon(BitmapDescriptorFactory
-                            .fromResource(R.drawable.ic_launcher)));
-        }
-    }*/
-
-    @Override
-    public void onLocationChanged(Location location) {
-        double latitude = location.getLatitude();
-
-        // Getting longitude of the current location
-        double longitude = location.getLongitude();
-
-        // Creating a LatLng object for the current location
-        LatLng latLng = new LatLng(latitude, longitude);
-
-        map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
-        // Zoom in, animating the camera.
-        map.animateCamera(CameraUpdateFactory.zoomTo(14), 2000, null);
-    }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
     }
 }

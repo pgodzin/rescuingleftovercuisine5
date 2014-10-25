@@ -2,10 +2,12 @@ package com.example.rescuingleftovercuisine;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
@@ -14,13 +16,11 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-;
-
 public class EventDetailsActivity extends Activity {
 
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     private Uri fileUri;
-    private File fileStartImageFile;
+    private File startImageFile;
     private File fileEndImageFile;
 
     @Override
@@ -35,11 +35,6 @@ public class EventDetailsActivity extends Activity {
         TextView location = (TextView) findViewById(R.id.location);
 
         String locationString = getIntent().getStringExtra("location");
-        String[] cords = locationString.split(",");
-
-        Location loc = new Location("");
-//        loc.setLatitude(Double.valueOf(cords[0]));
-//        loc.setLongitude(Double.valueOf(cords[1]));
 
         detailName.setText(getIntent().getStringExtra("title"));
         detailTIme.setText(getIntent().getStringExtra("time"));
@@ -93,50 +88,63 @@ public class EventDetailsActivity extends Activity {
             }
         });
 
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        emailIntent.setType("application/image");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"pgg2105@columbia.edu"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Receipt");
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "RLC");
+        //Uri.parse("file:///storage/emulated/0/Pictures/MyCameraApp/IMG_20141025_134849.jpg"));
 
-        final ImageView startImage = (ImageView) findViewById(R.id.imageView_start);
-        final ImageView endImage = (ImageView) findViewById(R.id.imageView_end);
-        /*
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                fileStartImageFile = getOutputMediaFile();
-                fileUri = Uri.fromFile(fileStartImageFile); // create a file to save the image
+                startImageFile = getOutputMediaFile();
+                fileUri = Uri.fromFile(startImageFile); // create a file to save the image
                 i.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
                 startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
-                if (fileStartImageFile.exists()) {
-                    Bitmap myBitmap = BitmapFactory.decodeFile(fileStartImageFile.getAbsolutePath());
-                    ImageView startImage = (ImageView) findViewById(R.id.imageView_start);
-                    startImage.setImageBitmap(myBitmap);
-                    startImage.setVisibility(View.VISIBLE);
-                    startButton.setVisibility(View.GONE);
-
-                }
+                // while (startImageFile.exists()) { }
+                Bitmap myBitmap = BitmapFactory.decodeFile(startImageFile.getAbsolutePath());
+                ImageView startImage = (ImageView) findViewById(R.id.imageView_start);
+                startImage.setImageBitmap(myBitmap);
+                startImage.setVisibility(View.VISIBLE);
+                startButton.setVisibility(View.GONE);
+                endButton.setVisibility(View.VISIBLE);
+                Toast.makeText(EventDetailsActivity.this, "Image was saved!", Toast.LENGTH_SHORT).show();
             }
+
         });
+        emailIntent.putExtra("Start image",fileUri);
 
-<<<<<<< HEAD
         endButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                fileEndImageFile = getOutputMediaFile();
-                fileUri = Uri.fromFile(fileEndImageFile); // create a file to save the image
-                i.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-                startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+                                         @Override
+                                         public void onClick(View v) {
+                                             Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                             fileEndImageFile = getOutputMediaFile();
+                                             fileUri = Uri.fromFile(fileEndImageFile); // create a file to save the image
+                                             i.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
+                                             startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
-                if (fileEndImageFile.exists()) {
-                    Bitmap myBitmap = BitmapFactory.decodeFile(fileEndImageFile.getAbsolutePath());
-                    ImageView endImage = (ImageView) findViewById(R.id.imageView_end);
-                    endImage.setImageBitmap(myBitmap);
-                    endImage.setVisibility(View.VISIBLE);
-                    endButton.setVisibility(View.GONE);
+                                             //while (fileEndImageFile.exists()) {
+                                             Bitmap myBitmap = BitmapFactory.decodeFile(fileEndImageFile.getAbsolutePath());
+                                             ImageView endImage = (ImageView) findViewById(R.id.imageView_end);
+                                             endImage.setImageBitmap(myBitmap);
+                                             endImage.setVisibility(View.VISIBLE);
+                                             endButton.setVisibility(View.GONE);
 
-                }
-            }
-        }); */
+                                         }
+
+
+                                     }
+
+        );
+        emailIntent.putExtra("End image",fileUri);
+
+        startActivity(Intent.createChooser(emailIntent, "Send mail...")
+
+        );
     }
 
     @Override
@@ -144,7 +152,7 @@ public class EventDetailsActivity extends Activity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // Image captured and saved to fileUri specified in the Intent
-                // Toast.makeText(this, "Image saved to:\n" + data.getData(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Image saved to:\n" + data.getData(), Toast.LENGTH_LONG).show();
 
             } else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the image capture
@@ -157,6 +165,7 @@ public class EventDetailsActivity extends Activity {
     /**
      * Create a File for saving an image or video
      */
+
     private static File getOutputMediaFile() {
         // To be safe, you should check that the SDCard is mounted
         // using Environment.getExternalStorageState() before doing this.
