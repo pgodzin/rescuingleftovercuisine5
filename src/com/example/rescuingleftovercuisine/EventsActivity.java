@@ -68,9 +68,9 @@ public class EventsActivity extends Activity {
 
                 //call detail activity to view details of this activity
                 /*
-                String eventName = adapter.getItem(position);
+                Event event = adapter.getItem(position);
                 Intent detail = new Intent(this, DetailActivity.class);
-                detail.putExtra(Intent.EXTRA_TEXT, eventName);
+                detail.putExtra(Intent.EXTRA_TEXT, event);
                 startActivity(detail); */
             }
         });
