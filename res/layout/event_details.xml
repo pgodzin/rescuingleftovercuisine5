@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,41 +16,42 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/detail_name"
         android:id="@+id/detail_name"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"/>
+        android:layout_gravity="center"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/detail_datetime"
         android:id="@+id/detail_time"
-        android:paddingLeft="10dp"/>
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/detail_datetime"
+        android:id="@+id/description"
+        android:layout_gravity="center"
+/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="location"
         android:id="@+id/location"
-        android:paddingLeft="10dp"/>
+        android:layout_gravity="center"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Description"
-        android:id="@+id/description"
-        android:paddingLeft="10dp"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
         android:id="@+id/event_map"
-        android:src="@drawable/map"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"/>
+        android:src="@drawable/map_img"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,66 +62,79 @@
         android:textSize="20sp"
         android:visibility="visible"
         android:paddingBottom="10dp"
-        android:paddingLeft="10dp"/>
+        android:padding="10dp"
+        android:layout_gravity="center"/>
 
     <HorizontalScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/horizontalScrollView"
         android:visibility="gone"
-        android:paddingLeft="10dp"/>
+        android:padding="10dp"
+        android:layout_gravity="center"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Take pickup picture"
         android:id="@+id/button_start"
-        android:paddingTop="10dp"
         android:visibility="gone"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView_start"
-        android:visibility="gone"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        />
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_button"
+/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End Button"
+        android:text="Take picture on delivery"
         android:id="@+id/button_end"
-        android:paddingTop="10dp"
         android:visibility="gone"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"/>
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take picture of receipt"
+        android:id="@+id/button_receipt"
+        android:visibility="gone"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_button"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign up for this pickup!"
         android:id="@+id/signup_button"
-        android:paddingLeft="10dp"/>
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_button"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
         android:id="@+id/cancel_button"
-        android:layout_marginTop="10dp"
         android:visibility="gone"
-        android:paddingLeft="10dp"/>
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_button"/>
 
-    <ImageView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView_end"
+        android:text="Send Report"
+        android:id="@+id/report_button"
         android:visibility="gone"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        />
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corner_button"/>
+
 </LinearLayout>
+</ScrollView>
