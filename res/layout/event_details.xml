@@ -4,27 +4,46 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:id="@+id/">
+              >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/detail_name"
-        android:id="@+id/textView"/>
+        android:id="@+id/detail_name"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/detail_datetime"
-        android:id="@+id/textView2"
-        />
+        android:id="@+id/detail_time"
+        android:paddingLeft="10dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/event_map"
         android:src="@drawable/map"
-        />
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start picture"
+        android:id="@+id/button_start"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Button"
+        android:id="@+id/button_end"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"/>
 </LinearLayout>
