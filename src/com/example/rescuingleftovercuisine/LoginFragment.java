@@ -69,8 +69,8 @@ public class LoginFragment extends Fragment {
                     }
             ).executeAsync();
 
-            //Intent i = new Intent(getActivity(), MainPage.class);
-            //startActivity(i);
+            Intent i = new Intent(getActivity(), EventsActivity.class);
+            startActivity(i);
             Log.i(TAG, "Logged in...");
         } else if (state.isClosed()) {
             Log.i(TAG, "Logged out...");
