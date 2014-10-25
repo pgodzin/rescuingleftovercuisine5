@@ -16,8 +16,9 @@ public class Event {
     private String eventLocation;
 
     //initialize event from the website
-    public Event(){
-
+    public Event(String title, String time){
+        eventTitle = title;
+        eventTime = time;
     }
 
     public int getEventSpace(){
@@ -29,11 +30,11 @@ public class Event {
     }
 
     public String getEventTitle(){
-        return null;
+        return eventTitle;
     }
 
     public String getEventTime() {
-        return null;
+        return eventTime;
     }
 
 }

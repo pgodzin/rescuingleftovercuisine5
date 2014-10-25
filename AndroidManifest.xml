@@ -26,5 +26,8 @@
         <activity
             android:name=".EventsActivity"
             android:label="Events" />
+        <activity
+            android:name=".EventDetailActivity"
+            android:label="Event Details" />
     </application>
 </manifest>

@@ -1,8 +1,11 @@
 package com.example.rescuingleftovercuisine;
 
 import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,30 +25,40 @@ import backend.Event;
  */
 public class EventsActivity extends Activity {
 
-    ArrayAdapter<String> adapter = null;
-    ArrayList<Event> eventData = null; //Create an events class
+    ArrayAdapter<Event> adapter = null;
+    ArrayList<Event> eventData = new ArrayList<Event>(); //Create an events class
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, new ArrayList<String>()){
+        ListView eventsList = (ListView) findViewById(R.id.lv_events);
+        //sample event Data
+        for(int i = 0; i < 10; i++) {
+            Event test = new Event("Test Event " + i, "Today");
+            eventData.add(test);
+        }
+
+        adapter = new ArrayAdapter<Event>(this, android.R.layout.simple_list_item_2, android.R.id.text1, eventData){
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
+//                LayoutInflater inflater = (LayoutInflater) getApplicationContext()
+//                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
+//                View view = inflater.inflate(R.layout.activity_events, parent, false);
                 View view =  super.getView(position, convertView, parent);
 
                 TextView eventTitle = (TextView) view.findViewById(android.R.id.text1);
                 TextView eventTime = (TextView) view.findViewById(android.R.id.text2);
 
                 eventTitle.setText(eventData.get(position).getEventTitle());
-                eventTitle.setText(eventData.get(position).getEventTime());
+                eventTime.setText(eventData.get(position).getEventTime());
 
                 return view;
             }
         };
 
-        ListView eventsList = (ListView) findViewById(R.id.lv_events);
         eventsList.setAdapter(adapter);
 
         eventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

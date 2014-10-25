@@ -11,6 +11,17 @@
     android:text="Event Name Goes Here"
     android:id="@+id/li_event"/>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_weight="1">
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    </LinearLayout>
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
