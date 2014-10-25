@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import backend.Data_Array;
 import backend.Event;
 
 import java.util.ArrayList;
@@ -13,51 +14,119 @@ import java.util.ArrayList;
 public class EventsActivity extends Activity {
 
     ArrayAdapter<Event> adapter = null;
+    ArrayAdapter<Event> later_adapter = null;
+
     ArrayList<Event> eventData = new ArrayList<Event>(); //Create an events class
+    ArrayList<Event> laterEventData = new ArrayList<Event>(); //Create an events class
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
+        Event[] arr = Data_Array.events();
+
         ListView eventsList = (ListView) findViewById(R.id.lv_events);
-        //sample event Data
-        for (int i = 0; i < 10; i++) {
-            Event test = new Event("Test Event " + i, "Today");
-            eventData.add(test);
+
+        for (int i = 0; i < 2; i++) {
+            eventData.add(arr[i]);
         }
 
-        adapter = new ArrayAdapter<Event>(this, android.R.layout.simple_list_item_2, android.R.id.text1, eventData) {
+        ListView laterEventsList = (ListView) findViewById(R.id.lv_later);
+
+        for (int i = 2; i < arr.length; i++) {
+            laterEventData.add(arr[i]);
+        }
+
+        adapter = new ArrayAdapter<Event>(this, R.layout.list_item, R.id.li_event, eventData) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
 
                 View view = super.getView(position, convertView, parent);
 
-                TextView eventTitle = (TextView) view.findViewById(android.R.id.text1);
-                TextView eventTime = (TextView) view.findViewById(android.R.id.text2);
+                TextView eventTitle = (TextView) view.findViewById(R.id.li_event);
+                TextView eventTime = (TextView) view.findViewById(R.id.datetime);
+                TextView location = (TextView) view.findViewById(R.id.location);
 
                 eventTitle.setText(eventData.get(position).getEventTitle());
-                eventTime.setText(eventData.get(position).getEventTime());
+                eventTime.setText(eventData.get(position).getEventDate() + " at " +
+                        eventData.get(position).getEventTime());
+                location.setText(eventData.get(position).getEventLocation());
+
+                return view;
+            }
+        };
+
+        later_adapter = new ArrayAdapter<Event>(this, R.layout.list_item, R.id.li_event, laterEventData) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                View view = super.getView(position, convertView, parent);
+
+                TextView eventTitle = (TextView) view.findViewById(R.id.li_event);
+                TextView eventTime = (TextView) view.findViewById(R.id.datetime);
+                TextView location = (TextView) view.findViewById(R.id.location);
+
+                eventTitle.setText(laterEventData.get(position).getEventTitle());
+                eventTime.setText(laterEventData.get(position).getEventDate() + " at " +
+                        laterEventData.get(position).getEventTime());
+                location.setText(laterEventData.get(position).getEventLocation());
 
                 return view;
             }
         };
 
         eventsList.setAdapter(adapter);
+        laterEventsList.setAdapter(later_adapter);
 
         eventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "Item " + position + " selected", Toast.LENGTH_SHORT).show();
-
-                //call detail activity to view details of this activity
 
                 Event event = adapter.getItem(position);
                 Intent detail = new Intent(EventsActivity.this, EventDetailsActivity.class);
                 String title = event.getEventTitle();
                 String time = event.getEventTime();
+                String location = event.getEventLocation();
+                String description = event.getEventDescription();
+                int currentNum = event.getCurrentNum();
+                int maxNum = event.getMaxNum();
+                String leader = event.getLeadRescuer();
+
                 detail.putExtra("title", title);
                 detail.putExtra("time", time);
+                detail.putExtra("location", location);
+                detail.putExtra("description", description);
+                detail.putExtra("currentNum", currentNum);
+                detail.putExtra("maxNum", maxNum);
+                detail.putExtra("leader", leader);
+
+
+                startActivity(detail);
+            }
+        });
+
+        laterEventsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Event event = adapter.getItem(position);
+                Intent detail = new Intent(EventsActivity.this, EventDetailsActivity.class);
+                String title = event.getEventTitle();
+                String time = event.getEventTime();
+                String location = event.getEventLocation();
+                String description = event.getEventDescription();
+                int currentNum = event.getCurrentNum();
+                int maxNum = event.getMaxNum();
+                String leader = event.getLeadRescuer();
+
+                detail.putExtra("title", title);
+                detail.putExtra("time", time);
+                detail.putExtra("location", location);
+                detail.putExtra("description", description);
+                detail.putExtra("currentNum", currentNum);
+                detail.putExtra("maxNum", maxNum);
+                detail.putExtra("leader", leader);
 
                 startActivity(detail);
             }

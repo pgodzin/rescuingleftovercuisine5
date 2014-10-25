@@ -23,21 +23,58 @@
         android:id="@+id/detail_time"
         android:paddingLeft="10dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="location"
+        android:id="@+id/location"
+        android:paddingLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Description"
+        android:id="@+id/description"
+        android:paddingLeft="10dp"/>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/event_map"
         android:src="@drawable/map"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"/>
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Spots filled: "
+        android:id="@+id/spots_filled"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalScrollView"
+        android:visibility="gone"
+        android:paddingLeft="10dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start picture"
+        android:text="Take pickup picture"
         android:id="@+id/button_start"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -45,7 +82,8 @@
         android:id="@+id/imageView_start"
         android:visibility="gone"
         android:paddingLeft="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -53,7 +91,25 @@
         android:text="End Button"
         android:id="@+id/button_end"
         android:paddingTop="10dp"
-        android:paddingLeft="20dp"/>
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up for this pickup!"
+        android:id="@+id/signup_button"
+        android:paddingLeft="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancel_button"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:paddingLeft="10dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -61,5 +117,6 @@
         android:id="@+id/imageView_end"
         android:visibility="gone"
         android:paddingTop="10dp"
-        android:paddingLeft="10dp"/>
+        android:paddingLeft="10dp"
+        />
 </LinearLayout>

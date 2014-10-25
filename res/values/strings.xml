@@ -4,5 +4,7 @@
     <string name="app_id">852315401457117</string>
     <string name="detail_name">Large Text</string>
     <string name="detail_datetime">Medium Text</string>
+    <string name="todays_events"><u>Today\'s Events</u></string>
+    <string name="week_events"><u>Later this week:</u></string>
 
 </resources>

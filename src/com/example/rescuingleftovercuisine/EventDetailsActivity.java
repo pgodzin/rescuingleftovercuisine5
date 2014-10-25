@@ -2,18 +2,12 @@ package com.example.rescuingleftovercuisine;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -34,12 +28,62 @@ public class EventDetailsActivity extends Activity {
 
         TextView detailName = (TextView) findViewById(R.id.detail_name);
         TextView detailTIme = (TextView) findViewById(R.id.detail_time);
+        TextView description = (TextView) findViewById(R.id.description);
+        TextView location = (TextView) findViewById(R.id.location);
 
         detailName.setText(getIntent().getStringExtra("title"));
         detailTIme.setText(getIntent().getStringExtra("time"));
+        description.setText(getIntent().getStringExtra("description"));
+        location.setText(getIntent().getStringExtra("location"));
 
+        final Button signup = (Button) findViewById(R.id.signup_button);
+        final Button cancel = (Button) findViewById(R.id.cancel_button);
         final Button startButton = (Button) findViewById(R.id.button_start);
         final Button endButton = (Button) findViewById(R.id.button_end);
+        final HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
+        final TextView spotsFilled = (TextView) findViewById(R.id.spots_filled);
+
+        LinearLayout topLinearLayout = new LinearLayout(this);
+        topLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        int[] images = {R.drawable.fb1, R.drawable.fb2, R.drawable.fb3};
+        spotsFilled.setText(getIntent().getStringExtra("currentNum") + " / " + getIntent().getStringExtra("maxNum"));
+        for (int i = 0; i < images.length; i++) {
+            final ImageView imageView = new ImageView(this);
+            imageView.setTag(i);
+            imageView.setImageResource(images[i]);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setMaxHeight(80);
+            imageView.setMaxWidth(80);
+
+            imageView.setPadding(10, 5, 5, 10);
+            topLinearLayout.addView(imageView);
+
+        }
+
+        scrollView.addView(topLinearLayout);
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signup.setVisibility(View.GONE);
+                startButton.setVisibility(View.VISIBLE);
+                cancel.setVisibility(View.VISIBLE);
+                scrollView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signup.setVisibility(View.VISIBLE);
+                startButton.setVisibility(View.GONE);
+                cancel.setVisibility(View.GONE);
+                scrollView.setVisibility(View.GONE);
+
+            }
+        });
+
+
         final ImageView startImage = (ImageView) findViewById(R.id.imageView_start);
         final ImageView endImage = (ImageView) findViewById(R.id.imageView_end);
         /*

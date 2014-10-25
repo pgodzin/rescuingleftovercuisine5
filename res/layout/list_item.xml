@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAppearance="@android:style/TextAppearance.Large"
-    android:text="Event Name Goes Here"
-    android:id="@+id/li_event"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:text="Event Name Goes Here"
+        android:id="@+id/li_event"
+        android:paddingLeft="25dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="3dp"/>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_weight="1">
-    
-    <Button
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date and Time goes here"
+        android:textAppearance="@android:style/TextAppearance.Small"
+        android:layout_below="@+id/li_event"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="3dp"
+        android:paddingRight="10dp"
+        android:id="@+id/datetime"
+        android:textStyle="italic"
+        android:paddingLeft="25dp"/>
+
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    
-    </LinearLayout>
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Date and Time goes here"
-    android:textAppearance="@android:style/TextAppearance.Small"/>
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Location"
+        android:id="@+id/location"
+        android:layout_below="@+id/datetime"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="25dp"
+        android:paddingBottom="10dp"
+        android:textStyle="italic"/>
 
-</LinearLayout>
+</RelativeLayout>
