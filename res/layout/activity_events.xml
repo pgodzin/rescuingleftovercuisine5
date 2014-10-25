@@ -3,7 +3,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_margin="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,7 +20,6 @@
         android:text="@string/todays_events"
         android:id="@+id/todays_events"
         android:paddingLeft="10dp"
-        android:paddingTop="10dp"
         android:paddingBottom="3dp"/>
 
     <ListView
@@ -38,4 +45,5 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"/>
+
 </LinearLayout>

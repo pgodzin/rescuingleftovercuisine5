@@ -2,6 +2,7 @@ package com.example.rescuingleftovercuisine;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +13,8 @@ import android.widget.*;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+;
 
 public class EventDetailsActivity extends Activity {
 
@@ -31,6 +34,13 @@ public class EventDetailsActivity extends Activity {
         TextView description = (TextView) findViewById(R.id.description);
         TextView location = (TextView) findViewById(R.id.location);
 
+        String locationString = getIntent().getStringExtra("location");
+        String[] cords = locationString.split(",");
+
+        Location loc = new Location("");
+//        loc.setLatitude(Double.valueOf(cords[0]));
+//        loc.setLongitude(Double.valueOf(cords[1]));
+
         detailName.setText(getIntent().getStringExtra("title"));
         detailTIme.setText(getIntent().getStringExtra("time"));
         description.setText(getIntent().getStringExtra("description"));
@@ -46,7 +56,7 @@ public class EventDetailsActivity extends Activity {
         LinearLayout topLinearLayout = new LinearLayout(this);
         topLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
         int[] images = {R.drawable.fb1, R.drawable.fb2, R.drawable.fb3};
-        spotsFilled.setText(getIntent().getStringExtra("currentNum") + " / " + getIntent().getStringExtra("maxNum"));
+        spotsFilled.setText(getIntent().getIntExtra("currentNum", 0) + " / " + getIntent().getIntExtra("maxNum", 0));
         for (int i = 0; i < images.length; i++) {
             final ImageView imageView = new ImageView(this);
             imageView.setTag(i);
@@ -107,6 +117,7 @@ public class EventDetailsActivity extends Activity {
             }
         });
 
+<<<<<<< HEAD
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

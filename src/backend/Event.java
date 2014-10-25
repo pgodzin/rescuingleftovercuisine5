@@ -52,14 +52,6 @@ public class Event {
         this.eventTime = eventTime;
     }
 
-    public String getEventDescription() {
-        return eventDescription;
-    }
-
-    public void setEventDescription(String eventDescription) {
-        this.eventDescription = eventDescription;
-    }
-
     public String getLeadRescuer() {
         return leadRescuer;
     }
@@ -68,12 +60,20 @@ public class Event {
         this.leadRescuer = leadRescuer;
     }
 
-    public String getEventLocation() {
-        return eventLocation;
+    public void setEventDescription(String desc) {
+        this.eventDescription = desc;
     }
 
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
+    }
+
+    public String getEventDescription() {
+        return eventDescription;
+    }
+
+    public String getEventLocation() {
+        return eventLocation;
     }
 
     public String getEventTitle() {

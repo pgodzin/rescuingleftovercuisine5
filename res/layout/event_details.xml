@@ -55,7 +55,7 @@
         android:text="Spots filled: "
         android:id="@+id/spots_filled"
         android:textSize="20sp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"/>
 
