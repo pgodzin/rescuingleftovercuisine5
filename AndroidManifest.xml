@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".EventDetailsActivity"/>
+        <activity android:name=".EventDetailsActivity"
+                  android:configChanges="orientation|keyboardHidden|screenSize"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

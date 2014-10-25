@@ -39,6 +39,14 @@
         android:paddingLeft="20dp"
         android:paddingTop="10dp"/>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView_start"
+        android:visibility="gone"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,4 +54,12 @@
         android:id="@+id/button_end"
         android:paddingTop="10dp"
         android:paddingLeft="20dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView_end"
+        android:visibility="gone"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"/>
 </LinearLayout>
