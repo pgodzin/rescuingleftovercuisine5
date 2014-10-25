@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">rescuingleftovercuisine</string>
+    <string name="app_name">RLC</string>
     <string name="app_id">852315401457117</string>
+    <string name="detail_name">Large Text</string>
+    <string name="detail_datetime">Medium Text</string>
 
 </resources>
