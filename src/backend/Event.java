@@ -17,8 +17,24 @@ public class Event {
 
     //initialize event from the website
     public Event(String title, String time){
-        eventTitle = title;
-        eventTime = time;
+        this.eventTitle = title;
+        this.eventTime = time;
+    }
+
+    public void setEventDescription(String desc){
+        this.eventDescription = desc;
+    }
+
+    public void setEventLocation(String eventLocation) {
+        this.eventLocation = eventLocation;
+    }
+
+    public String getEventDescription(){
+        return eventDescription;
+    }
+
+    public String getEventLocation(){
+        return eventLocation;
     }
 
     public int getEventSpace(){
