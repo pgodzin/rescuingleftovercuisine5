@@ -3,7 +3,7 @@
     Risham and Helen
 
  */
-
+package backend;
 public class EventClass{
     int id;
     String name;
@@ -16,8 +16,10 @@ public class EventClass{
     int event_space;
     int wait_list;
     String lead_rescuer;
-
-    public String toString(Event printing){
+ 
+    
+    
+    public static String toString(EventClass printing){
         return "Name: " + printing.name+"\n"+ "Location: " + printing.location + "\n" + "Time: " + printing.time_start + " - " + printing.time_end;
 
     }

@@ -4,17 +4,22 @@
 
     Hard coded data
  */
-
+package backend;
 public class Data_Array {
+    /*
 
+    Risham and Helen
+
+    Hard coded data
+ */
+    
+    
     public static void main(String[] args) {
+        EventClass[] arr = new EventClass[8];
 
-
-        Event [] arr = new Event[8]; //created an array of event
-
-
-        int i =0 ;// this is the counter
-        arr[0].id= 0;
+        int i = 0;// this is the counter
+        arr[i] = new EventClass();
+        arr[i].id = 0;
         arr[i].name= "Starbucks";
         arr[i].time_start = "4:00pm";
         arr[i].time_end= "4:30pm";
@@ -25,8 +30,9 @@ public class Data_Array {
         arr[i].event_space= 3;
         arr[i].wait_list= 1;
         arr[i].lead_rescuer = "Bob Bie";
+        
         i++; //incrementing i for the next round
-
+        arr[i] = new EventClass();
         arr[i].id = 1;
         arr[i].name = "Mcdonalds";
         arr[i].time_start =  "7:00pm";
@@ -40,6 +46,7 @@ public class Data_Array {
         arr[i].lead_rescuer =  "Test Ing";
 
         i++;
+        arr[i] = new EventClass();
         arr[i].id =  2;
         arr[i].name = "Wendy's";
         arr[i].time_start = "7:45pm";
@@ -53,6 +60,7 @@ public class Data_Array {
         arr[i].lead_rescuer = "Some One";
 
         i++;
+        arr[i] = new EventClass();
         arr[i].id = 3;
         arr[i].name = "KFC";
         arr[i].time_start = "5:30pm";
@@ -66,7 +74,8 @@ public class Data_Array {
         arr[i].lead_rescuer = "Bobby";
 
         i++;
-        arr[i].id = 4,
+        arr[i] = new EventClass();
+        arr[i].id = 4;
         arr[i].name = "Five Guys Burgers and Fries";
         arr[i].time_start = "4:40pm";
         arr[i].time_end = "5:30pm";
@@ -76,11 +85,12 @@ public class Data_Array {
         arr[i].description = "Food at five guys";
         arr[i].event_space = 3;
         arr[i].wait_list = 1;
-        arr[i].lead_rescue = "Person Test";
+        arr[i].lead_rescuer = "Person Test";
 
         i++;
+        arr[i] = new EventClass();
         arr[i].id = 5;
-        arr[i].name = "Panera"
+        arr[i].name = "Panera";
         arr[i].time_start = "4:30pm";
         arr[i].time_end = "5:30pm";
         arr[i].date = "October 21";
@@ -92,6 +102,7 @@ public class Data_Array {
         arr[i].lead_rescuer = "Bob";
 
         i++;
+        arr[i] = new EventClass();
         arr[i].id = 6;
         arr[i].name = "Subway";
         arr[i].time_start = "1:30pm";
@@ -105,6 +116,7 @@ public class Data_Array {
         arr[i].lead_rescuer = "Jasmine";
 
         i++;
+        arr[i] = new EventClass();
         arr[i].id = 7;
         arr[i].name = "Tacobell";
         arr[i].time_start = "3:30pm";
@@ -116,11 +128,12 @@ public class Data_Array {
         arr[i].event_space = 2;
         arr[i].wait_list = 1;
         arr[i].lead_rescuer = "hello";
-
+        
         int total = i;
         for(i=0; i <= total; i++){
-            System.out.println(EventClass.toString(arr[i]));
+            System.out.println(EventClass.toString(arr[i]) + "\n");
         }
      }
 
 }
+
